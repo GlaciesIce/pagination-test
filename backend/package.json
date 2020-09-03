@@ -1,0 +1,16 @@
+{
+  "name": "universal-table-backend",
+  "version": "1.0.0",
+  "description": "Backend server of this project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Laurensius Frederik Tanno <l.frederik.tanno@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2",
+    "moment": "^2.27.0"
+  }
+}
