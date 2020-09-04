@@ -7,8 +7,13 @@ const express       = require('express');
 const bodyParser    = require('body-parser');
 
 const app           = express();
+const cors          = require('cors');
 const data          = require('./sampleData.json');
 const router        = express.Router();
+
+
+// Initialise App with Extensions
+app.use(cors());
 
 app.use(
     bodyParser.urlencoded({
@@ -57,7 +62,7 @@ router.get('/',function(req,res,next){
     }
 });
 app.use(router)
-app.listen(5000,() => console.log(`app running at port: 5000`));
+app.listen(5000,() => console.log(`App running at port: 5000`));
 
 function compare(properties){
     let property = properties[0];

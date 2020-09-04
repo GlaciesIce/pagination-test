@@ -9,6 +9,7 @@
   "author": "Laurensius Frederik Tanno <l.frederik.tanno@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
     "moment": "^2.27.0"
