@@ -13,6 +13,12 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
-  }
+  },
+  mounted () {
+    this.$http.get("/")
+    .then((resp)=>{
+      console.log(JSON.stringify(resp.data.data));
+    })
+  },
 }
 </script>
