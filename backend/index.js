@@ -23,33 +23,48 @@ app.use(
 );
 
 app.use(bodyParser.json());
-router.get('/',function(req,res,next){
+router.get('/',function(req,res){
     try{
         let by = (req.query.by)? req.query.by : 'name';
         let order = (req.query.order) ? req.query.order : 'DESC';
+        let pagination = (req.query.pagination) ? req.query.pagination: 'false';
         let limit = 15;
         let offset = 0;
         let page = 1;
 
-        if(req.query.limit){
-            limit = parseInt(req.query.limit);
-        }
-        if(req.query.page){
-            page = parseInt(req.query.page);
-            offset = (page-1) * limit;
-        }
-
         let sortedData = data.sort(compare([by,order]));
-        sortedData = sortedData.slice(offset,limit);
-        let result = {
+        let result = {};
+        if(pagination == 'true'){
+            if(req.query.limit){
+                limit = parseInt(req.query.limit);
+            }
+            if(req.query.page){
+                page = parseInt(req.query.page);
+                offset = (page-1) * limit;
+            }
+            let lastPage = Math.ceil(data.length / limit);
+            
+            sortedData = sortedData.slice(offset,limit + offset);
+            result = {
+                code:200,
+                message:"Success",
+                data:sortedData,
+                meta:{
+                    currentPage:page,
+                    lastPage:lastPage
+                }
+            }
+            return res.status(200).json(result);
+        }
+        result = {
             code:200,
-            message:"Success",
+            message:'Success',
             data:sortedData,
             meta:{
                 currentPage:page
             }
         }
-        res.status(200).json(result);
+        return res.status(200).json(result);
     }
     catch(e){
         console.error(e)
