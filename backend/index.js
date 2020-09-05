@@ -31,8 +31,21 @@ router.get('/',function(req,res){
         let limit = 15;
         let offset = 0;
         let page = 1;
+        let search = req.query.search;
 
         let sortedData = data.sort(compare([by,order]));
+
+        if(search){
+            var query = [];
+           data.forEach(function (e){
+               if(e.name.includes(search) || e.phone.includes(search) || e.email.includes(search) || e.age == search || e.address.includes(search) || e.id == search || e.created_at.includes(search)){
+                   query.push(e);
+               }
+           });
+           sortedData = query.sort(compare([by,order]))
+        }
+
+        
         let result = {};
         if(pagination == 'true'){
             if(req.query.limit){
