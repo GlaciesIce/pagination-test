@@ -64,7 +64,8 @@ router.get('/',function(req,res){
                 data:sortedData,
                 meta:{
                     currentPage:page,
-                    lastPage:lastPage
+                    lastPage:lastPage,
+                    total:data.length
                 }
             }
             return res.status(200).json(result);
