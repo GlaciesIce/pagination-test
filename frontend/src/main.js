@@ -7,7 +7,7 @@ import store from './store'
 import env from './env.js'
 
 //Import Bootstrap
-import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // Import Mixins
 import mixinMethods from '@/assets/mixin/methods.js'

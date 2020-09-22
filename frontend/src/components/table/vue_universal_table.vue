@@ -326,10 +326,10 @@
               this.config.paginationExist = false;//auto false on pagination when substituted
             }
           } else {
-            if(this.data != null && this.data.length != 0){//if both api_url and data has been filled in
-              this.propsValid.valid = false
-              this.propsValid.reason = "Choose either 'api_url' or 'data' to be filled in, cannot be both!"
-            }
+            // if(this.data != null && this.data.length != 0){//if both api_url and data has been filled in
+            //   this.propsValid.valid = false
+            //   this.propsValid.reason = "Choose either 'api_url' or 'data' to be filled in, cannot be both!"
+            // }
           }
   
           //CHECK sort_by
